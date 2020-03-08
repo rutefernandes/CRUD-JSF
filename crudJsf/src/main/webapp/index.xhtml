@@ -10,6 +10,18 @@
 <h:head>
 </h:head>
 <h:body>
-	<h:outputText value="#{teste.horario}" />
+    <h:form id="frm">
+        <p:outputLabel value="Enter your text:" for="myTxt"></p:outputLabel>
+        <p:watermark value="Enter value.." for="myTxt"></p:watermark>
+
+        <p:editor value="#{pc_helloWorld.bio}" id="myTxt"></p:editor>
+        <p:spacer width="20"></p:spacer>
+        <div style="text-align: center;">
+            <p:commandButton value="Submit" update=":frm:output" style=""></p:commandButton>
+        </div>
+        <p:spacer width="20"></p:spacer>
+        <p:outputLabel value="Output :"></p:outputLabel>
+        <p:outputLabel value="#{pc_helloWorld.bio}" id="output"></p:outputLabel>
+    </h:form>
 </h:body>
 </html>
