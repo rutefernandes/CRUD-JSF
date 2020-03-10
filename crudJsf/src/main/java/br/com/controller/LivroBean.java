@@ -1,10 +1,12 @@
 package br.com.controller;
 
-import br.com.dao.LivroDAO; 
-import br.com.model.Livro;import java.io.Serializable;
+import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+
+import br.com.dao.LivroDAO;
+import br.com.model.Livro;
 
 @ManagedBean(name = "livroMB", eager = true)
 @ViewScoped
