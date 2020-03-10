@@ -1,4 +1,4 @@
-# PROJETO CRUD JSF
+# CRUD JSF com Hibernate e primefaces
 ### Autora: Rute Fernandes do Nascimento
 
 ### Sobre
