@@ -1,25 +1,32 @@
 # PROJETO CRUD JSF
-## Authora: Rute Fernandes do Nascimento
-Projeto construído utilizando Maven 3 e
+### Autora: Rute Fernandes do Nascimento
 
-### Itens obrigatórios implementados 
+### Sobre
+A aplicação consiste em um CRUD implementado em JSF com hibernate e primefaces que tem por finalidade disponibilizar as funcionalidades de inserção, atualização, listagem e exclusão de livros. 
+
+### Itens implementados 
 A. Criar uma aplicação java web utilizando JavaServer Faces (JSF)
 B. Utilizar persistência em um banco de dados 
-
-### Itens adicionais implementados
 C. Hibernate 
 G. Primefaces
-J. Publicar projeto no heroku
 
 ### Ferramentas utilizadas
-- Eclipse IDE | Java EE
+- Eclipse IDE
 - XAMPP (Banco MYSQL)
 - Maven 3.3.9
 
-### Requisitos para execução
-- J13
-- JSF *versao
-- Servidor MySQL
+### Execução em ambiente local (Eclipse IDE)
+1. Clone no projeto
+https://github.com/rutefernandes/CRUD-JSF.git
 
-### Acesso para a aplicação:
-- url
+2. Em preferences verifique os JRE/JDK ativos, caso não seja a versão 13 configure os em execution environment e o jdk compiler
+
+3. Povoe o banco como desejar
+
+4. Execute o maven;
+
+#### Requisitos
+- Maven 3.0
+- Java JDK 13
+- MySQL 
+- Servidor web de preferencia
