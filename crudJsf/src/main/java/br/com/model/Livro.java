@@ -30,9 +30,7 @@ public class Livro implements Serializable {
 	private String editora;
 	private Date data_pub;
 	
-	public Livro() {
-        super();
-    }
+	public Livro() {}
 	
     public Livro(int id, String titulo, String isbn, String autor, String editora,
     		Date data_pub) {

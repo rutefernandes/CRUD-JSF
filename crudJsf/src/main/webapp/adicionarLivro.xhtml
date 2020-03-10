@@ -13,7 +13,7 @@
 		<h1>Adicionar Livro</h1>
      	<h:form>
             <h:outputText value="Título"/>
-            <h:inputText value="#{livroMB.livro.titulo}"/>
+            <h:inputText value="#{livroMB.livro.titulo}" />
             <br/>
             <h:outputText value="Autor"/>
             <h:inputText value="#{livroMB.livro.autor}"/>
@@ -27,12 +27,9 @@
             <h:outputText value="Data de publicação"/>
             <h:inputText value="#{livroMB.livro.data_pub}"/>
             <br/>
-              <p:commandButton value="Inserir" 
-                             rendered="#{livroMB.livro.id=='0'}"
-                             action="#{livroMB.adicionar()}"/>
-            <p:commandButton value="Alterar" 
-                             rendered="#{livroMB.livro.id>'0'}"
-                             action="#{livroMB.salvarAtualizacao}"/>
+              <p:commandButton value="Inserir"
+                             actionListener="#{livroMB.salvar}"/>
+
         </h:form>		
      
       

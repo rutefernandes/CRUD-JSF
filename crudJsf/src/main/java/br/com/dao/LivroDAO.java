@@ -1,10 +1,7 @@
 package br.com.dao;
 
-import java.util.ArrayList;
 import java.util.List;
-import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -12,7 +9,6 @@ import br.com.model.Livro;
 import br.com.util.HibernateUtil;
 
 public class LivroDAO {
-    private List<Livro> livros = new ArrayList<Livro>();
     private Session session;
     private Transaction transaction;
    
@@ -87,6 +83,31 @@ public class LivroDAO {
         return objetos;
 
     }
+
+   
+    public void saveOrUpdate(Livro livro) {
+        try {
+           this.session = HibernateUtil.getSessionFactory().openSession();
+           this.transaction = this.session.beginTransaction();
+           if (livro.getId() == 0) {
+           	this.session.save(livro);
+           } else {
+        	   this.session.update(livro);
+           }
+           this.transaction.commit();
+           System.out.println("deletado!");
+        }catch (HibernateException e) {
+            System.out.println("Erro ao deletar:" + e.getMessage());
+        } finally {
+	         try {
+              if (this.session.isOpen()) {
+                     this.session.close();
+              }
+	         } catch (Throwable e) {
+	        	 System.out.println("Erro ao tentar encerrar operação. Mensagem:" + e.getMessage());
+	         }
+        }
+  }
 
 
 }

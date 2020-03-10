@@ -10,7 +10,6 @@ public class HibernateUtil {
         try{
 	        Configuration configuration = new Configuration();
 	        configuration.configure("hibernate.cfg.xml");
-	        System.out.println("aa");
 	        return configuration.buildSessionFactory();
         }catch (Throwable e){
           System.out.println("Erro ao iniciar: " + e);
