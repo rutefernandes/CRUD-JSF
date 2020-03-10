@@ -4,7 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-
+import javax.faces.model.DataModel;
+import javax.faces.model.ListDataModel;
 import br.com.dao.LivroDAO;
 import br.com.model.Livro;
 
@@ -13,9 +14,13 @@ import br.com.model.Livro;
 public class LivroBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private List <Livro> livros;  
-    LivroDAO livroDao = new LivroDAO();  
+    private DataModel listarLivros;
+    LivroDAO livroDao;  
     Livro livro = new Livro();
-    Livro novoLivro;
+    
+    public LivroBean(){
+        this.livroDao = new LivroDAO();
+    }
     
 	public LivroDAO getLivroDao() {
 		return livroDao;
@@ -33,43 +38,46 @@ public class LivroBean implements Serializable {
 		this.livro = livro;
 	}
 
-	public Livro getNovoLivro() {
-		return novoLivro;
-	}
+	public DataModel getListarLivros() {
+        List<Livro> lista = new LivroDAO().listar();
+        listarLivros = new ListDataModel(lista);
+        return listarLivros;
+    }
 
-	public void setNovoLivro(Livro novoLivro) {
-		this.novoLivro = novoLivro;
-	}
+    public void setListarVeiculos(DataModel listarVeiculos) {
+        this.listarLivros = listarVeiculos;
+    }
 
+	
 	public List <Livro> listar(){  
 		livros = getLivroDao().listar();  
 		return livros;  
     } 
     
-    public void adicionar(Livro livro) {
-    	setNovoLivro(new Livro());
-        //int id = 0;  
-        //id = getLivroDao().getId();  
-        //novoLivro.setId(id);  
-        getLivroDao().adicionar(getNovoLivro());  
-        System.out.println("Livro adicionado!");
+    public String novoLivro(){
+        livro = new Livro();
+        return "adicionarLivro";
     }
     
-    public void deletar() {
-        try {
-            getLivroDao().deletar(getLivro());
-            System.out.println("Livro deletado com sucesso");
-        } catch (Exception e) {
-            System.out.println("n deu");
-        }
+    public String adicionar(){
+    	getLivroDao().adicionar(getLivro());
+        return "index";
+    }
+       
+    public String deletar() {
+        Livro objTemporario = (Livro) (listarLivros.getRowData());
+        getLivroDao().deletar(objTemporario);
+        return "index";
     }
     
-    public void atualizar() {
-    	try{
-			getLivroDao().alterar(getLivro());  
-		    System.out.println("livro atualizado!");  
-    	} catch (Exception e){
-    		System.out.println("n deu");
-    	}
+    public String atualizar() {
+        livro = (Livro) (listarLivros.getRowData());
+        return "adicionarLivro";
     }
+    
+    public String salvarAtualizacao(){
+        getLivroDao().alterar(livro);
+        return "index";
+    }
+    
 }

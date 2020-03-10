@@ -16,18 +16,9 @@ public class LivroDAO {
     private Session session;
     private Transaction transaction;
    
-    public Integer getId(){  
-        Session session = HibernateUtil.getSessionFactory().openSession();  
-        String hql = "select max(U.id) from User U";  
-        Query query = session.createQuery(hql);  
-        List < Integer > results = query.list();  
-        Integer id = 1;  
-        if (results.get(0) != null){  
-            id = results.get(0) + 1;  
-        }  
-        session.flush();  
-        session.close();  
-        return id;  
+    public Livro getById(long id) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        return (Livro) session.load(Livro.class, id);
     }  
     
     public void adicionar(Livro livro) {
@@ -55,6 +46,7 @@ public class LivroDAO {
              this.transaction = this.session.beginTransaction();
              this.session.delete(livro);
              this.transaction.commit();
+             System.out.println("deletado!");
           }catch (HibernateException e) {
               System.out.println("Erro ao deletar:" + e.getMessage());
           } finally {
@@ -88,26 +80,12 @@ public class LivroDAO {
     }
     
     public List<Livro> listar() {
-          try {
-             this.session = HibernateUtil.getSessionFactory().openSession();
-             this.transaction = this.session.beginTransaction();
-             Criteria filtro = this.session.createCriteria(Livro.class);
-             livros = (List<Livro>) filtro.list();
-             this.transaction.commit();
-          } catch (Throwable e) {
-	             if (this.transaction.isActive()) {
-	                    this.transaction.rollback();
-	             }
-          } finally {
-             try {
-	            if (this.session.isOpen()) {
-	                   this.session.close();
-	            }
-             } catch (Throwable e) {
-                System.out.println("Erro ao tentar encerrar operação. Mensagem:" + e.getMessage());
-             }
-          }
-          return livros;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction operacaoSQL = session.beginTransaction();
+        List objetos = session.createQuery("from Livro").list();
+        operacaoSQL.commit();
+        return objetos;
+
     }
 
 
