@@ -10,8 +10,8 @@
     </h:head>
  
     <h:body>
-		<h1>Adicionar Livro</h1>
-     	<h:form>
+		<h1>Atualizar Livro</h1>
+     	<h:form id="form" >
             <h:outputText value="Título"/>
             <h:inputText value="#{livroMB.livro.titulo}" />
             <br/>
@@ -28,7 +28,8 @@
             <h:inputText value="#{livroMB.livro.data_pub}"/>
             <br/>
               <p:commandButton value="Inserir"
-                             actionListener="#{livroMB.salvar}"/>
+              				update="form"
+                             action="#{livroMB.salvarAtualizacao}"/>
 
         </h:form>		 
     </h:body>

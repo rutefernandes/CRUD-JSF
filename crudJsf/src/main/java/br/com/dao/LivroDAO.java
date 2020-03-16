@@ -24,14 +24,14 @@ public class LivroDAO {
 	         this.session.save(livro);
 	         this.transaction.commit();
           }catch (HibernateException e) {
-              System.out.println("Erro na inserção:" + e.getMessage());
+              System.out.println("Erro na inserï¿½ï¿½o:" + e.getMessage());
           } finally {
         	  try {
         		  if (this.session.isOpen()) {
         			  this.session.close();
                   }
               } catch (Throwable e) {
-            	  System.out.println("Erro ao tentar encerrar operação. Mensagem:" + e.getMessage());
+            	  System.out.println("Erro ao tentar encerrar operaï¿½ï¿½o. Mensagem:" + e.getMessage());
               }
           }
     }
@@ -51,7 +51,7 @@ public class LivroDAO {
                        this.session.close();
                 }
 	         } catch (Throwable e) {
-	        	 System.out.println("Erro ao tentar encerrar operação. Mensagem:" + e.getMessage());
+	        	 System.out.println("Erro ao tentar encerrar operaï¿½ï¿½o. Mensagem:" + e.getMessage());
 	         }
           }
     }
@@ -63,14 +63,14 @@ public class LivroDAO {
              this.session.update(livro);
              this.transaction.commit();
           }catch (HibernateException e) {
-                 System.out.println("Não foi possível alterar. Erro:" + e.getMessage());
+                 System.out.println("Nï¿½o foi possï¿½vel alterar. Erro:" + e.getMessage());
           } finally {
              try {
                 if (this.session.isOpen()) {
                 	this.session.close();
                 }
              } catch (Throwable e) {
-                 System.out.println("Erro ao tentar encerrar operação. Mensagem:" + e.getMessage());
+                 System.out.println("Erro ao tentar encerrar operaï¿½ï¿½o. Mensagem:" + e.getMessage());
              }
           }
     }
@@ -78,7 +78,7 @@ public class LivroDAO {
     public List<Livro> listar() {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction operacaoSQL = session.beginTransaction();
-        List objetos = session.createQuery("from Livro").list();
+        List<Livro> objetos = session.createQuery("from Livro").list();
         operacaoSQL.commit();
         return objetos;
 
@@ -104,7 +104,7 @@ public class LivroDAO {
                      this.session.close();
               }
 	         } catch (Throwable e) {
-	        	 System.out.println("Erro ao tentar encerrar operação. Mensagem:" + e.getMessage());
+	        	 System.out.println("Erro ao tentar encerrar operaï¿½ï¿½o. Mensagem:" + e.getMessage());
 	         }
         }
   }

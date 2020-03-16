@@ -1,11 +1,13 @@
 package br.com.controller;
 
+import java.awt.event.ActionEvent;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.event.ActionEvent;
+import javax.faces.context.FacesContext;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import br.com.dao.LivroDAO;
@@ -18,10 +20,16 @@ public class LivroBean implements Serializable {
 	private List <Livro> livros;  
     private DataModel<Livro> listarLivros;
     private LivroDAO livroDao;  
-    private Livro livro = new Livro()  ;
+    private Livro livro;
+    
+    @PostConstruct
+    public void init() {
+        livro = new Livro();
+    }
     
     public LivroBean(){
         this.livroDao = new LivroDAO();
+        livros = getLivroDao().listar();
     }
     
 	public LivroDAO getLivroDao() {
@@ -46,32 +54,33 @@ public class LivroBean implements Serializable {
         return listarLivros;
     }
 
-    public void setListarVeiculos(DataModel listarVeiculos) {
-        this.listarLivros = listarVeiculos;
-    }
+	public List<Livro> getLivros() {
+		livros = new LivroDAO().listar();
+		return livros;
+	}
+
+	public void setLivros(List<Livro> livros) {
+		this.livros = livros;
+	}
 
 	public List <Livro> listar(){  
-		livros = getLivroDao().listar();  
-		return livros;  
+		return getLivros(); 
     } 
     
     public String novoLivro(){
-        livro = new Livro();
         return "adicionarLivro";
     }
     
-    public String adicionar(){
-    	getLivroDao().adicionar(getLivro());
-        return "index";
-    }
        
-    public String salvar(ActionEvent event) {
-    	getLivroDao().adicionar(getLivro());
-        livro = new Livro();
-        
+    public String salvar() {
+    	System.out.println("teste");
+    		new LivroDAO().adicionar(livro);
+    		livro = new Livro();
+    		listar();
+      
         return "index";
     }
- 
+    
     
     public String deletar() {
         Livro objTemporario = (Livro) (listarLivros.getRowData());
