@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 import javax.faces.event.ActionEvent;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
@@ -17,7 +16,7 @@ import br.com.model.Livro;
 public class LivroBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private List <Livro> livros;  
-    private DataModel listarLivros;
+    private DataModel<Livro> listarLivros;
     private LivroDAO livroDao;  
     private Livro livro = new Livro()  ;
     
@@ -41,9 +40,9 @@ public class LivroBean implements Serializable {
 		this.livro = livro;
 	}
 
-	public DataModel getListarLivros() {
+	public DataModel<Livro> getListarLivros() {
         List<Livro> lista = new LivroDAO().listar();
-        listarLivros = new ListDataModel(lista);
+        listarLivros = new ListDataModel<Livro>(lista);
         return listarLivros;
     }
 
