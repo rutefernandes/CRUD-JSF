@@ -1,13 +1,16 @@
-# CRUD JSF com Hibernate e primefaces
+# CRUD utilizando JSF, Hibernate e Primefaces
 ### Autora: Rute Fernandes do Nascimento
 
 ### Sobre
-A aplicação consiste em um CRUD implementado em JSF com hibernate e primefaces que tem por finalidade disponibilizar as funcionalidades de inserção, atualização, listagem e exclusão de livros. 
+A aplicação consiste em um CRUD implementado em JSF com hibernate e primefaces, o qual tem por finalidade disponibilizar as funcionalidades de inserção, atualização, listagem e exclusão de livros. 
 
 ### Itens implementados 
-A. Criar uma aplicação java web utilizando JavaServer Faces (JSF)
+A. Criar uma aplicação java web utilizando Java Server Faces (JSF)
+
 B. Utilizar persistência em um banco de dados 
+
 C. Hibernate 
+
 G. Primefaces
 
 ### Ferramentas utilizadas
@@ -19,11 +22,11 @@ G. Primefaces
 1. Clone no projeto
 https://github.com/rutefernandes/CRUD-JSF.git
 
-2. Em preferences verifique os JRE/JDK ativos, caso não seja a versão 13 configure os em execution environment e o jdk compiler
+2. No eclipse, vá até "preferences" e verifique se os JRE/JDK ativos correspondem a versão 13. Caso não seja, configure-os corretamente em "execution environment" e "jdk compiler"
 
-3. Povoe o banco como desejar
+3. Crie um banco utilizando o MySQL chamado "biblioteca" e rode-o em um servidor 
 
-4. Execute o maven;
+4. Execute o projeto no eclipse utilizando o maven;
 
 #### Requisitos
 - Maven 3.0
