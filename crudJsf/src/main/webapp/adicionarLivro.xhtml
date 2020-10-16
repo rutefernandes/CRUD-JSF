@@ -27,10 +27,9 @@
             <h:outputText value="Data de publicação"/>
             <h:inputText value="#{livroMB.livro.data_pub}"/>
             <br/>
-              <p:commandButton value="Inserir"
+              <p:commandButton type="submmit" value="Inserir"
               				update="form"
-                             action="#{livroMB.salvarAtualizacao}"/>
-
+                            action="#{livroMB.salvarAtualizacao}"/>
         </h:form>		 
     </h:body>
 </html>

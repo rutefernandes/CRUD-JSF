@@ -86,12 +86,14 @@ public class LivroBean implements Serializable {
     
     public String atualizar() {
         livro = (Livro) (listarLivros.getRowData());
+        System.out.println(livro.getAutor());
         return "adicionarLivro";
     }
     
     public String salvarAtualizacao(){
+    	System.out.println(livro.getAutor());
         getLivroDao().alterar(livro);
-        return "index";
+        return "index?faces-redirect=true";
     }
     
 }
