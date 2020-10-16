@@ -1,13 +1,11 @@
 package br.com.controller;
 
-import java.awt.event.ActionEvent;
 import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.context.FacesContext;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import br.com.dao.LivroDAO;
@@ -73,12 +71,10 @@ public class LivroBean implements Serializable {
     
        
     public String salvar() {
-    	System.out.println("teste");
     		new LivroDAO().adicionar(livro);
     		livro = new Livro();
     		listar();
-      
-        return "index";
+        return "index?faces-redirect=true";
     }
     
     

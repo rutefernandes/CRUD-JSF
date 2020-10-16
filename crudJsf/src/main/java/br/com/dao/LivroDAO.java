@@ -60,7 +60,7 @@ public class LivroDAO {
           try {
              this.session = HibernateUtil.getSessionFactory().openSession();
              this.transaction = this.session.beginTransaction();
-             this.session.update(livro);
+             this.session.saveOrUpdate(livro);
              this.transaction.commit();
           }catch (HibernateException e) {
                  System.out.println("N�o foi poss�vel alterar. Erro:" + e.getMessage());

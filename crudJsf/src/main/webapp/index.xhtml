@@ -31,9 +31,9 @@
 					id="dataCadastro" showButtonPanel="true">
 				</p:calendar>
 	           
-	              <p:commandButton type="button" value="Inserir"
+	              <p:commandButton type="submmit" value="Inserir"
 	                             action="#{livroMB.salvar}"
-	                             update="form"/>	                             
+	                             update="form" process="@form" />	                             
 	    	 </h:panelGrid>
 	  	</h:form> 
 	  	
